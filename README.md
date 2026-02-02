@@ -1,5 +1,5 @@
 Case Study — Icarus  
-Client-Server Validation Vulnerability Analysis
+This repository documents a security case study focused on client-side trust and server-side validation issues found in the game Icarus.
 
 ## Overview
 - **Project:** Icarus  
@@ -11,12 +11,10 @@ This case study documents the identification of an architectural flaw related to
 
 ## Context
 During an exploratory analysis of the game’s local files, it was observed that critical player progression data was stored locally in `.json` format.
-
 These files were located within the system’s temporary directory and were used by the game during session loading as a source of progression data.
 
 ## Technical Findings
 The analysis revealed that:
-
 - Sensitive progression data was stored locally on the client
 - The data was readable and editable (`.json` format)
 - There was no evidence of:
@@ -28,18 +26,15 @@ The game accepted the values present in these files as valid without additional 
 
 ## Proof of Concept (PoC)
 Without the use of external tools or invasive techniques, it was possible to:
-
 - Manually edit the local `.json` files using a basic text editor
 - Modify values related to the in-game economy (multiple currency types)
 - Alter achievement and progression states
 
 The game accepted these changes without rollback, blocking, or server-side rejection.
-
 > This case study intentionally avoids step-by-step instructions, following responsible disclosure practices. <
 
 ## Potential Impact
 This type of vulnerability can lead to:
-
 - Compromised in-game economy
 - Illegitimate player progression
 - Invalid rankings and achievements
@@ -51,21 +46,17 @@ From a system architecture perspective:
 
 ## Responsible Disclosure
 After confirming the issue, a technical and responsible communication was sent to the company responsible for the game, describing the vulnerability and its potential impact.
-
 > No response or follow-up was received! <
 
 ## Mitigation Recommendations
 Possible approaches to mitigate this vulnerability include:
-
 - Server-side validation as the single source of truth
-- Integrity signing of local data
-- Use of secure tokens or checksums
-- Progress synchronization through authenticated APIs
-- Detection of state inconsistencies between client and server
+- Treat all client-side data as untrusted input
+- Integrity checks for progression-related data
+- Detection of inconsistent state between client and server
 
 ## Key Learnings
 This case reinforced important concepts related to:
-
 - Client-server architecture
 - Data integrity and validation
 - Security risks of local data storage
@@ -74,6 +65,11 @@ This case reinforced important concepts related to:
 
 ## Final Notes
 This case study demonstrates an analytical and ethical approach to identifying architectural weaknesses, with a focus on system improvement rather than exploitation.
+
+## Ethical and Legal Considerations
+This case study is provided strictly for educational and analytical purposes.
+No automation tools, exploitation scripts, or step-by-step instructions are included.  
+The goal of this repository is to discuss architectural and validation risks, not to enable misuse.
 
 ## Author
 > Luiz Maia <  
