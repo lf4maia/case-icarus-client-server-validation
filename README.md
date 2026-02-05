@@ -48,6 +48,10 @@ From a system architecture perspective:
 After confirming the issue, a technical and responsible communication was sent to the company responsible for the game, describing the vulnerability and its potential impact.
 > No response or follow-up was received! <
 
+## Disclosure Outcome
+> Based on the developer’s response, this behavior is not considered a security vulnerability within the project’s scope. Instead, it is treated as an intentional design decision related to local save management and player autonomy.
+> This clarification reclassifies the finding from a security flaw to an architectural trade-off, prioritizing player freedom over strict server-side enforcement.
+
 ## Mitigation Recommendations
 Possible approaches to mitigate this vulnerability include:
 - Server-side validation as the single source of truth
